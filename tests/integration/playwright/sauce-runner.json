@@ -1,6 +1,6 @@
 {
-  "apiVersion": "v1alpha",
-  "kind": "playwright",
+  "APIVersion": "v1alpha",
+  "Kind": "playwright",
   "defaults": {
     "mode": "sauce"
   },
@@ -14,9 +14,6 @@
         "other tag"
       ]
     }
-  },
-  "docker": {
-    "fileTransfer": "copy"
   },
   "playwright": {
     "version": "package.json",

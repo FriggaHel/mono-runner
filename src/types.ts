@@ -8,8 +8,8 @@ export type CliParams = {
 }
 
 export type KindContainer = {
-  apiVersion: string;
-  kind: string;
+  APIVersion: string;
+  Kind: string;
 };
 
 export type SauceConfig = {
