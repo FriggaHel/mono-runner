@@ -77,6 +77,7 @@ export async function runPlaywrightJob (args: CliParams) {
   runCfg.sauceReportFile = path.join(path.dirname(runCfgPath), '__assets__', 'sauce-report.json');
 
   const suite = getSuite(runCfg, args.suiteName);
+  console.log(suite);
 
   const projectDir = path.dirname(getAbsolutePath(runCfg.path));
 
