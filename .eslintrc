@@ -20,7 +20,8 @@
       "jest/globals": true
   },
   "ignorePatterns": [
-      "lib/"
+      "lib/",
+      "tests/integration/"
   ],
   "root": true,
   "settings": {
