@@ -84,7 +84,7 @@ export async function runCypressJob (args: CliParams) {
 
   console.log(runCfg);
   const config = getCypressOpts(runCfg, args.suiteName);
-  // FIXME: Run try-catch
+  // FIXME: Run try-catch + Timeouts
   const res = await cypress.run(config);
   console.log(res);
   // Execute Reporter

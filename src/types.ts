@@ -4,6 +4,7 @@
 export type CliParams = {
   configFile: string;
   suiteName: string;
+  nodeBin: string;
 }
 
 export type KindContainer = {
@@ -48,3 +49,31 @@ export type CypressConfigContainer = {
 };
 
 export type CypressSauceConfig = KindContainer & SauceConfig & CypressConfigContainer;
+
+// Playwright Config
+export type PlaywrightParams = {
+  project?: string;
+  timeout?: number;
+  globalTimeout?: number;
+  browserName?: string;
+  headless?: boolean;
+}
+
+export type PlaywrightSuite = {
+  name: string;
+  platformName: string;
+  testMatch: string[];
+  params: PlaywrightParams;
+  env: { [key: string]: string };
+};
+
+export type PlaywrightConfig = {
+  configFile: string;
+};
+
+export type PlaywrightConfigContainer = {
+  playwright: PlaywrightConfig;
+  suites: PlaywrightSuite[];
+};
+
+export type PlaywrightSauceConfig = KindContainer & SauceConfig & PlaywrightConfigContainer;

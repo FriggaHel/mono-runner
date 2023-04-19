@@ -2,6 +2,7 @@ import { readFile } from 'fs/promises';
 import { ArgumentParser } from 'argparse';
 import { CliParams, KindContainer } from './types';
 import { runCypressJob } from './cypress';
+import { runPlaywrightJob } from './playwright';
 
 
 async function getConfigKind (runnerConfigPath: string): Promise<KindContainer> {
@@ -27,6 +28,10 @@ async function main (args: CliParams) {
       console.log('executing cypress');
       runCypressJob(args);
       break;
+    case 'playwright':
+      console.log('executing playwright');
+      runPlaywrightJob(args);
+      break;
     default:
       console.error(`"${kind.kind}" framework is unknown.`);
   }
@@ -50,9 +55,11 @@ function parseArgs (): CliParams | undefined {
     console.log('--suite needs to be specified');
     return;
   }
+
   return {
     configFile: args.config_file,
     suiteName: args.suite,
+    nodeBin: process.argv[0],
   }
 }
 

@@ -5,6 +5,8 @@
   "exclude": ["node_modules"],
 
   "compilerOptions": {
-    "outDir": "./lib"
+    "outDir": "./lib",
+    "allowJs": true,
+    "sourceMap": true
   }
 }
