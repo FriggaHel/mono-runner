@@ -28,7 +28,7 @@
       "testMatch": [
         ".*.js"
       ],
-      "params": {
+      "param": {
         "browserName": "firefox",
         "project": "firefox"
       }
