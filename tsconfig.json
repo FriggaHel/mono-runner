@@ -6,7 +6,6 @@
 
   "compilerOptions": {
     "outDir": "./lib",
-    "allowJs": true,
     "sourceMap": true
   }
 }

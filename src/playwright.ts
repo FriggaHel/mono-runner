@@ -73,6 +73,8 @@ export async function runPlaywrightJob (args: CliParams) {
 
   runCfg.path = runCfgPath;
   runCfg.resultsDir = path.join(path.dirname(runCfgPath), '__assets__');
+  runCfg.junitFile = path.join(path.dirname(runCfgPath), '__assets__', 'junit.xml');
+  runCfg.sauceReportFile = path.join(path.dirname(runCfgPath), '__assets__', 'sauce-report.json');
 
   const suite = getSuite(runCfg, args.suiteName);
 
@@ -164,8 +166,8 @@ export async function runPlaywrightJob (args: CliParams) {
     ...process.env,
     ...suite.env,
     // FIXME: Fix reporter
-    // PLAYWRIGHT_JUNIT_OUTPUT_NAME: runCfg.junitFile,
-    // SAUCE_REPORT_OUTPUT_NAME: runCfg.sauceReportFile,
+    PLAYWRIGHT_JUNIT_OUTPUT_NAME: runCfg.junitFile,
+    SAUCE_REPORT_OUTPUT_NAME: runCfg.sauceReportFile,
     FORCE_COLOR: "0",
   };
 
@@ -182,8 +184,6 @@ export async function runPlaywrightJob (args: CliParams) {
   const hasPassed = await playwrightPromise;
   return hasPassed;
 }
-
-async function runPlaywright(nodeBin: any, runCfg: any) {
 
   // FIXME Add NPM Support
   /*
@@ -221,4 +221,3 @@ async function runPlaywright(nodeBin: any, runCfg: any) {
   //   hasPassed,
   //   metrics,
   // };
-}

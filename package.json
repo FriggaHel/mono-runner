@@ -4,7 +4,8 @@
   "description": "Unified runners for frameworks",
   "main": "lib/main.js",
   "scripts": {
-    "build": "tsc",
+    "build-ts": "tsc",
+    "build": "npm run build-ts && cp ./src/sauce.config.mjs ./lib/",
     "lint": "eslint src/ tests/",
     "test": "jest"
   },

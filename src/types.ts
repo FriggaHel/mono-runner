@@ -76,4 +76,7 @@ export type PlaywrightConfigContainer = {
   suites: PlaywrightSuite[];
 };
 
-export type PlaywrightSauceConfig = KindContainer & SauceConfig & PlaywrightConfigContainer;
+export type PlaywrightSauceConfig = KindContainer & SauceConfig & PlaywrightConfigContainer & {
+  junitFile: string;
+  sauceReportFile: string;
+};
