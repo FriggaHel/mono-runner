@@ -1,4 +1,5 @@
 .DS_Store
+bundle/
 node_modules/
 lib/
 tests/integration/cypress/__assets__/
