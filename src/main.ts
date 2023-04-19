@@ -13,8 +13,8 @@ async function getConfigKind (runnerConfigPath: string): Promise<KindContainer> 
   } catch (e) {
     console.error(`unable to load ${runnerConfigPath}`);
     return {
-      apiVersion: 'unknown',
-      kind: 'unknown',
+      APIVersion: 'unknown',
+      Kind: 'unknown',
     }
   }
 }
@@ -23,7 +23,7 @@ async function main (args: CliParams) {
   console.log(`mono-runner`);
   const kind = await getConfigKind(args.configFile);
 
-  switch (kind.kind) {
+  switch (kind.Kind) {
     case 'cypress':
       console.log('executing cypress');
       runCypressJob(args);
@@ -33,7 +33,7 @@ async function main (args: CliParams) {
       runPlaywrightJob(args);
       break;
     default:
-      console.error(`"${kind.kind}" framework is unknown.`);
+      console.error(`"${kind.Kind}" framework is unknown.`);
   }
 
 }
