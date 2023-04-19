@@ -1,3 +1,5 @@
 node_modules/
 lib/
 tests/integration/cypress/__assets__/
+tests/integration/playwright/__assets__/
+tests/integration/playwright/playwright-report/
