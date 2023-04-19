@@ -3,6 +3,7 @@
 // Global
 export type CliParams = {
   configFile: string;
+  suiteName: string;
 }
 
 export type KindContainer = {
@@ -11,7 +12,8 @@ export type KindContainer = {
 };
 
 export type SauceConfig = {
-  dummy: string;
+  path: string;
+  resultsDir: string;
 };
 
 // Cypress Config
@@ -25,8 +27,9 @@ export type CypressSuite = {
   headless: boolean;
 
   config: {
-    testingType: string;
+    testingType: Cypress.TestingType ;
     specPattern: string[];
+    excludeSpecPattern: string[];
     env: { [key: string]: string };
   };
 }

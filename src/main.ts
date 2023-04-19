@@ -1,6 +1,7 @@
 import { readFile } from 'fs/promises';
 import { ArgumentParser } from 'argparse';
 import { CliParams, KindContainer } from './types';
+import { runCypressJob } from './cypress';
 
 
 async function getConfigKind (runnerConfigPath: string): Promise<KindContainer> {
@@ -17,13 +18,14 @@ async function getConfigKind (runnerConfigPath: string): Promise<KindContainer> 
   }
 }
 
-async function main (configFilePath: string) {
+async function main (args: CliParams) {
   console.log(`mono-runner`);
-  const kind = await getConfigKind(configFilePath);
+  const kind = await getConfigKind(args.configFile);
 
   switch (kind.kind) {
     case 'cypress':
-      console.log('executing cypress')
+      console.log('executing cypress');
+      runCypressJob(args);
       break;
     default:
       console.error(`"${kind.kind}" framework is unknown.`);
@@ -37,14 +39,20 @@ function parseArgs (): CliParams | undefined {
   });
 
   parser.add_argument('-c', '--config-file', { help: 'Path to the configuration file' });
+  parser.add_argument('-s', '--suite', { help: 'Suite to execute' });
 
   const args = parser.parse_args();
   if (!args.config_file) {
     console.log('--config-file needs to be specified');
     return;
   }
+  if (!args.suite) {
+    console.log('--suite needs to be specified');
+    return;
+  }
   return {
     configFile: args.config_file,
+    suiteName: args.suite,
   }
 }
 
@@ -53,5 +61,5 @@ function parseArgs (): CliParams | undefined {
   if (!args) {
     process.exit(1);
   }
-  await main(args.configFile);
+  await main(args);
 })();

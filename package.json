@@ -12,6 +12,8 @@
   "license": "MIT",
   "dependencies": {
     "argparse": "^2.0.1",
+    "cypress": "^12.10.0",
+    "sauce-testrunner-utils": "^1.0.0",
     "typescript": "^5.0.4"
   },
   "devDependencies": {

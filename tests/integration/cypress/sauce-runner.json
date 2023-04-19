@@ -1,0 +1,56 @@
+{
+  "apiVersion": "v1",
+  "kind": "cypress",
+  "sauce": {
+    "region": "us-west-1",
+    "concurrency": 10,
+    "metadata": {
+      "tags": [
+        "e2e",
+        "release team",
+        "other tag"
+      ],
+      "build": "Github Run $GITHUB_RUN_ID"
+    }
+  },
+  "cypress": {
+    "version": "12.6.0",
+    "configFile": "cypress.config.js"
+  },
+  "rootDir": "./",
+  "suites": [
+    {
+      "name": "Chrome on Windows",
+      "browser": "chrome",
+      "platformName": "Windows 11",
+      "screenResolution": "1920x1080",
+      "shard": "spec",
+      "config": {
+        "specPattern": [
+          "cypress/e2e/**/*.*"
+        ]
+      }
+    },
+    {
+      "name": "Firefox on Mac",
+      "browser": "firefox",
+      "browserVersion": "104",
+      "shard": "spec",
+      "platformName": "macOS 12",
+      "config": {
+        "specPattern": [
+          "cypress/e2e/**/*.*"
+        ]
+      }
+    }
+  ],
+  "artifacts": {
+    "download": {
+      "when": "always",
+      "match": [
+        "console.log"
+      ],
+      "directory": "./artifacts/"
+    }
+  }
+}
