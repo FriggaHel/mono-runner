@@ -2,7 +2,7 @@ import { existsSync } from 'fs';
 import { readFile } from 'fs/promises'
 import cypress from 'cypress';
 import * as path from 'path';
-import { shouldRecordVideo, getAbsolutePath, loadRunConfig, prepareNpmEnv, getArgs, getEnv, preExec } from 'sauce-testrunner-utils';
+import { shouldRecordVideo, getAbsolutePath, getEnv } from 'sauce-testrunner-utils';
 import { CliParams, CypressSauceConfig, CypressSuite } from './types';
 
 async function loadCypressJobConfig (configFilePath: string): Promise<CypressSauceConfig> {
