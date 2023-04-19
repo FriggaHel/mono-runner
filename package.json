@@ -15,7 +15,6 @@
   "dependencies": {
     "@playwright/test": "^1.32.3",
     "@saucelabs/playwright-reporter": "^0.4.1",
-    "@tsconfig/node18": "^1.0.3",
     "argparse": "^2.0.1",
     "cypress": "^12.10.0",
     "lodash": "^4.17.21",
@@ -26,6 +25,7 @@
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
+    "@tsconfig/node18": "^1.0.3",
     "@types/argparse": "^2.0.10",
     "@types/jest": "^29.5.0",
     "@types/lodash": "^4.14.194",

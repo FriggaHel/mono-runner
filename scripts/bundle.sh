@@ -8,7 +8,7 @@ export PLAYWRIGHT_BROWSERS_PATH=$PWD/bundle/Cache/
 echo $CYPRESS_CACHE_FOLDER
 echo $PLAYWRIGHT_BROWSERS_PATH
 
-cp -r ./src/ ./bundle/src/
+cp -r ./lib/ ./bundle/lib/
 # FIXME: Add with console wrapper
 # cp -r bin/ bundle/bin/
 
@@ -23,7 +23,6 @@ npm ci --production
 npx playwright install
 npx playwright install-deps
 npx playwright --version
-npm run build
 
 ./node ./node_modules/cypress/bin/cypress verify
 
