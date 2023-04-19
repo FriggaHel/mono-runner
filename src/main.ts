@@ -43,22 +43,22 @@ function parseArgs (): CliParams | undefined {
     description: 'mono-runner'
   });
 
-  parser.add_argument('-c', '--config-file', { help: 'Path to the configuration file' });
-  parser.add_argument('-s', '--suite', { help: 'Suite to execute' });
+  parser.add_argument('-r', '--runCfgPath', { help: 'Path to the configuration file' });
+  parser.add_argument('-s', '--suiteName', { help: 'Suite to execute' });
 
   const args = parser.parse_args();
-  if (!args.config_file) {
-    console.log('--config-file needs to be specified');
+  if (!args.runCfgPath) {
+    console.log('--runCfgPath needs to be specified');
     return;
   }
-  if (!args.suite) {
-    console.log('--suite needs to be specified');
+  if (!args.suiteName) {
+    console.log('--suiteName needs to be specified');
     return;
   }
 
   return {
-    configFile: args.config_file,
-    suiteName: args.suite,
+    configFile: args.runCfgPath,
+    suiteName: args.suiteName,
     nodeBin: process.argv[0],
   }
 }
