@@ -82,7 +82,7 @@ export async function runPlaywrightJob (args: CliParams) {
 
   // FIXME: Benefits ?
   const excludeParams = ['screenshot-on-failure', 'video', 'slow-mo', 'headless', 'headed'];
-  if (suite.params.browserName === 'chrome') {
+  if (suite.params?.browserName === 'chrome') {
     excludeParams.push('browser');
   }
 
@@ -91,8 +91,7 @@ export async function runPlaywrightJob (args: CliParams) {
   process.env.HEADLESS = suite.params.headless as unknown as string;
   process.env.SAUCE_SUITE_NAME = suite.name;
 
-  // FIXME:
-  // process.env.SAUCE_ARTIFACTS_DIRECTORY = runCfg.assetsDir;
+  process.env.SAUCE_ARTIFACTS_DIRECTORY = runCfg.resultsDir;
 
   if (runCfg.playwright.configFile) {
     const playwrightCfgFile = path.join(projectDir, runCfg.playwright.configFile);
