@@ -57,7 +57,7 @@ jobs:
           npm ci --production
           npx playwright install
           npx playwright install-deps
-          npx cypress --verify
+          npx cypress verify
 
       - name: Run Cypress
         run: |
