@@ -63,7 +63,7 @@ export type PlaywrightSuite = {
   name: string;
   platformName: string;
   testMatch: string[];
-  params: PlaywrightParams;
+  param: PlaywrightParams;
   env: { [key: string]: string };
 };
 

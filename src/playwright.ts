@@ -83,13 +83,13 @@ export async function runPlaywrightJob (args: CliParams) {
 
   // FIXME: Benefits ?
   const excludeParams = ['screenshot-on-failure', 'video', 'slow-mo', 'headless', 'headed'];
-  if (suite.params?.browserName === 'chrome') {
+  if (suite.param.browserName === 'chrome') {
     excludeParams.push('browser');
   }
 
   // Define env vars
-  process.env.BROWSER_NAME = suite.params.browserName;
-  process.env.HEADLESS = suite.params.headless as unknown as string;
+  process.env.BROWSER_NAME = suite.param.browserName;
+  process.env.HEADLESS = suite.param.headless as unknown as string;
   process.env.SAUCE_SUITE_NAME = suite.name;
 
   process.env.SAUCE_ARTIFACTS_DIRECTORY = runCfg.resultsDir;
@@ -103,8 +103,8 @@ export async function runPlaywrightJob (args: CliParams) {
     }
   }
 
-  if (suite.params.project) {
-    process.env.project = suite.params.project;
+  if (suite.param.project) {
+    process.env.project = suite.param.project;
   }
 
 
@@ -124,11 +124,11 @@ export async function runPlaywrightJob (args: CliParams) {
   ];
 
   // Default value for timeout (30min)
-  if (!suite.params.globalTimeout) {
-    suite.params.timeout = 1800000;
+  if (!suite.param.globalTimeout) {
+    suite.param.timeout = 1800000;
   }
 
-  const pwArgs = _.defaultsDeep(defaultArgs, replaceLegacyKeys(suite.params));
+  const pwArgs = _.defaultsDeep(defaultArgs, replaceLegacyKeys(suite.param));
 
   // There is a conflict if the playwright project has a `browser` defined,
   // since the job is launched with the browser set by saucectl, which is now set as the job's metadata.
