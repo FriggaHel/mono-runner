@@ -207,7 +207,7 @@ jobs:
         run: npm install -g saucectl
 
       - name: Test on Sauce
-        working-directory: ./tests/cloud/${{ matrix.framework }}/
+        working-directory: ./tests/integration/cloud/${{ matrix.framework }}/
         run: |
           BUNDLE_URL=https://storage.googleapis.com/${{ secrets.GCS_RUNNER_BUCKET }}/mono-runner-windows-amd64-${{ github.run_id }}.zip
           if [[ ${{ matrix.os }} =~ ^macOS ]];then
@@ -251,7 +251,7 @@ jobs:
       - name: Run web-page
         run: |
           python -m http.server 8000 &
-        working-directory: ./tests/cloud/www/
+        working-directory: ./tests/integration/cloud/www/
 
       - name: Start sauce-connect
         uses: saucelabs/sauce-connect-action@v2
@@ -262,7 +262,7 @@ jobs:
           scVersion: 4.7.1
 
       - name: Test on Sauce
-        working-directory: ./tests/cloud/${{ matrix.framework }}/
+        working-directory: ./tests/integration/cloud/${{ matrix.framework }}/
         run: |
           BUNDLE_URL=https://storage.googleapis.com/${{ secrets.GCS_RUNNER_BUCKET }}/mono-runner-windows-amd64-${{ github.run_id }}.zip
           if [[ ${{ matrix.os }} =~ ^macOS ]];then
